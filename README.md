@@ -1,2 +1,2 @@
 # kube-pttg-ip-hmrc
-Kubernetes confirm . for Income Proving hmrc service 
+Kubernetes config for Income Proving hmrc service 
