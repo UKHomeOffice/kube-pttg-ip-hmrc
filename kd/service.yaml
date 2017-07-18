@@ -13,4 +13,4 @@ spec:
     port: 443
     targetPort: https
   selector:
-    name: pttg-ip-stub
+    name: pttg-ip-hmrc
