@@ -99,16 +99,8 @@ spec:
               configMapKeyRef:
                 name: endpoint-config
                 key: BASE_HMRC_URL
-          - name: CLIENT_ID
-            valueFrom:
-              configMapKeyRef:
-                name: hmrc-config
-                key: CLIENT_ID
-          - name: TOTP_KEY
-            valueFrom:
-              configMapKeyRef:
-                name: hmrc-config
-                key: TOTP_KEY
+          - name: BASE_HMRC_ACCESS_CODE_URL
+            value: 'http://pttg-ip-hmrc-access-code'
         resources:
           limits:
             cpu: 300m
