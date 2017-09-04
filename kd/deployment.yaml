@@ -106,7 +106,7 @@ spec:
           - mountPath: /etc/nginx/secrets
             name: secrets
       - name: proxy
-        image: quay.io/ukhomeofficedigital/pttg-nginx-proxy:build-1
+        image: quay.io/ukhomeofficedigital/pttg-nginx-proxy:build-2
         imagePullPolicy: Always
         resources:
          limits:
