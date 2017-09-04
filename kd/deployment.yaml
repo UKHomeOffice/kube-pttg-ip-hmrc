@@ -89,7 +89,7 @@ spec:
         args:
           - -output=/etc/nginx/secrets
           - -tls-skip-verify=true
-          - -cn=pki:services/${NAMESPACE}/pki/issue/default:common_name=pttg-ip-hmrc.${NAMESPACE}.svc.cluster.local,file=/etc/nginx/secrets/pttg-ip-hmrc,fmt=bundle,update=2h,ttl=2h
+          - -cn=pki:services/${NAMESPACE}/pki/issue/default:common_name=pttg-ip-hmrc.${NAMESPACE}.svc.cluster.local,file=/etc/nginx/secrets/pttg-ip-hmrc,fmt=bundle
         env:
           - name: VAULT_ADDR
             value: "https://vault.vault.svc.cluster.local:8200"
@@ -106,7 +106,7 @@ spec:
           - mountPath: /etc/nginx/secrets
             name: secrets
       - name: proxy
-        image: quay.io/ukhomeofficedigital/pttg-nginx-proxy:build-2
+        image: quay.io/ukhomeofficedigital/pttg-nginx-proxy:v3.1.3a
         imagePullPolicy: Always
         resources:
          limits:
