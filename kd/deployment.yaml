@@ -130,6 +130,8 @@ spec:
             value: /etc/nginx/secrets/pttg-ip-hmrc-bundle.pem
           - name: SERVER_KEY
             value: /etc/nginx/secrets/pttg-ip-hmrc-key.pem
+          - name: ADD_NGINX_SERVER_CFG
+            value: 'gzip off;'
         volumeMounts:
           - name: secrets
             mountPath: /etc/nginx/secrets
