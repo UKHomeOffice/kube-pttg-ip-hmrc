@@ -149,7 +149,7 @@ spec:
           - name: SERVER_KEY
             value: /etc/nginx/secrets/pttg-ip-hmrc-key.pem
           - name: ADD_NGINX_SERVER_CFG
-            value: 'gzip off;ssl_verify_client on;'
+            value: 'gzip off'
         volumeMounts:
           - name: secrets
             mountPath: /etc/nginx/secrets
@@ -159,18 +159,6 @@ spec:
             containerPort: 80
           - name: https
             containerPort: 10443
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 30
-          timeoutSeconds: 1
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 30
-          timeoutSeconds: 1
       - name: pttg-ip-hmrc
         image: quay.io/ukhomeofficedigital/pttg-ip-hmrc:{{.VERSION}}
         securityContext:
