@@ -157,6 +157,103 @@ spec:
         ports:
           - name: https
             containerPort: 10443
+      - name: pttg-ip-hmrc
+        image: quay.io/ukhomeofficedigital/pttg-ip-hmrc:{{.VERSION}}
+        securityContext:
+           capabilities:
+             drop:
+               - SETUID
+               - SETGID
+        env:
+          - name: JAVA_OPTS
+            value: "-Xms150m -Xmx250m -Djavax.net.ssl.trustStore=/data/truststore.jks"
+          - name: SERVER_PORT
+            value: '8080'
+          - name: ENDPOINTS_INFO_ENABLED
+            value: 'false'
+          - name: SPRING_PROFILES_ACTIVE
+            value: 'postgres'
+          - name: PTTG_DB_HOSTNAME
+            valueFrom:
+              secretKeyRef:
+                name: pttg-rds-access
+                key: endpoint
+          - name: PTTG_DB_PORT
+            valueFrom:
+              secretKeyRef:
+                name: pttg-rds-access
+                key: port
+          - name: PTTG_DB_NAME
+            valueFrom:
+              secretKeyRef:
+                name: pttg-rds-access
+                key: database
+          - name: IP_SCHEMA_NAME
+            valueFrom:
+              secretKeyRef:
+                name: db-secrets
+                key: schema_name
+          - name: IP_DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: db-secrets
+                key: application_username
+          - name: IP_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-secrets
+                key: application_password
+          - name: BASE_HMRC_URL
+            valueFrom:
+              configMapKeyRef:
+                name: endpoint-config
+                key: BASE_HMRC_URL
+          - name: BASE_HMRC_ACCESS_CODE_URL
+            value: 'https://pttg-ip-hmrc-access-code.pt-i-{{.ENVIRONMENT}}.svc.cluster.local'
+          - name: JDK_TRUST_FILE
+            value: '/data/truststore.jks'
+          - name: AUDITING_DEPLOYMENT_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: AUDITING_DEPLOYMENT_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+        resources:
+          limits:
+            cpu: 1600m
+            memory: 612Mi
+          requests:
+            cpu: 100m
+            memory: 484Mi
+        ports:
+          - name: http
+            containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+            httpHeaders:
+              - name: X-probe
+                value: kubelet
+          initialDelaySeconds: 10
+          periodSeconds: 20
+          timeoutSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+            httpHeaders:
+              - name: X-probe
+                value: kubelet
+          periodSeconds: 20
+          timeoutSeconds: 5
+        imagePullPolicy: Always
+        volumeMounts:
+          - mountPath: /data
+            name: javapki
+            readOnly: true            
       volumes:
       - name: secrets
         emptyDir:
