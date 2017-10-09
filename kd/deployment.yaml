@@ -149,10 +149,7 @@ spec:
           - name: SERVER_KEY
             value: /etc/nginx/secrets/pttg-ip-hmrc-key.pem
           - name: ADD_NGINX_SERVER_CFG
-            value: 'gzip off;ssl_verify_client on;ssl_client_certificate /etc/nginx/secrets/pttg-ip-hmrc-ca.pem;
-    if ($ssl_client_i_dn != "/C=GB/O=HOD Intermediate CA prod/OU=HOD/L=London/ST=London/CN=HOD Intermediate CA prod") {
-        return 403;
-    }'
+            value: 'gzip off;ssl_verify_client on;ssl_client_certificate /etc/nginx/secrets/pttg-ip-hmrc-ca.pem;if ($ssl_client_i_dn != "/C=GB/O=HOD Intermediate CA prod/OU=HOD/L=London/ST=London/CN=HOD Intermediate CA prod") {return 403;};'
         volumeMounts:
           - name: secrets
             mountPath: /etc/nginx/secrets
