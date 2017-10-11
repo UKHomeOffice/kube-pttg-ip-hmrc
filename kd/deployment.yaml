@@ -269,3 +269,4 @@ spec:
       - name: service-secrets
         secret:
           secretName: pttg-ip-hmrc-service-secrets
+          mode: 438
