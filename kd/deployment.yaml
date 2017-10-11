@@ -156,7 +156,7 @@ spec:
           - name: secrets
             mountPath: /etc/nginx/secrets
             readOnly: true
-          - name: serviceSecrets
+          - name: service-secrets
             mountPath: /etc/nginx/secrets
             readOnly: true
         ports:
@@ -266,6 +266,6 @@ spec:
       - name: javapki
         emptyDir:
           medium: "Memory"
-      - name: serviceSecrets
+      - name: service-secrets
         secret:
           secretName: pttg-ip-hmrc-service-secrets
