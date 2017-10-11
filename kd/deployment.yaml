@@ -149,9 +149,7 @@ spec:
           - name: SERVER_KEY
             value: /etc/nginx/secrets/pttg-ip-hmrc-key.pem
           - name: ADD_NGINX_SERVER_CFG
-            value: 'gzip off;'
-          - name: BASIC_AUTH
-            value: /etc/nginx/service-secrets/basicAuth
+            value: 'gzip off;auth_basic_user_file /etc/nginx/service-secrets/basicAuth;'
         volumeMounts:
           - name: secrets
             mountPath: /etc/nginx/secrets
@@ -269,4 +267,3 @@ spec:
       - name: service-secrets
         secret:
           secretName: pttg-ip-hmrc-service-secrets
-          mode: 438
