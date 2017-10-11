@@ -261,4 +261,3 @@ spec:
       - name: javapki
         emptyDir:
           medium: "Memory"
-          
