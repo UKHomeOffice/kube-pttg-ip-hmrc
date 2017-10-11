@@ -150,12 +150,14 @@ spec:
             value: /etc/nginx/secrets/pttg-ip-hmrc-key.pem
           - name: ADD_NGINX_SERVER_CFG
             value: 'gzip off;'
+          - name: BASIC_AUTH
+            value: /etc/nginx/service-secrets/basicAuth
         volumeMounts:
           - name: secrets
             mountPath: /etc/nginx/secrets
             readOnly: true
           - name: service-secrets
-            mountPath: /etc/nginx/secrets
+            mountPath: /etc/nginx/service-secrets
             readOnly: true
         ports:
           - name: https
