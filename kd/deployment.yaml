@@ -158,6 +158,7 @@ spec:
             readOnly: true
           - name: service-secrets
             mountPath: /etc/nginx/service-secrets
+            readOnly: false
         ports:
           - name: https
             containerPort: 10443
