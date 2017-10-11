@@ -155,7 +155,7 @@ spec:
             mountPath: /etc/nginx/secrets
             readOnly: true
           - name: service-secrets
-            mountPath: /etc/nginx/secrets
+            mountPath: /etc/nginx/service-secrets
             readOnly: true
         ports:
           - name: https
