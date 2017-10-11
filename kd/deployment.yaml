@@ -151,7 +151,7 @@ spec:
           - name: ADD_NGINX_SERVER_CFG
             value: 'gzip off;'
           - name: BASIC_AUTH
-            value: /etc/nginx/secrets/pttg-ip-hmrc-service-secrets
+            value: /etc/nginx/secrets/basicAuth
         volumeMounts:
           - name: secrets
             mountPath: /etc/nginx/secrets
