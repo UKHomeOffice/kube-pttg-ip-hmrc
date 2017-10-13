@@ -18,6 +18,7 @@ spec:
   template:
     metadata:
       labels:
+        tim: tim
         name: pttg-ip-hmrc
         version: {{.VERSION}}
       annotations:
