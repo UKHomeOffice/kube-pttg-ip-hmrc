@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       labels:
-        tim: tim
+        sys: ip
         name: pttg-ip-hmrc
         version: {{.VERSION}}
       annotations:
