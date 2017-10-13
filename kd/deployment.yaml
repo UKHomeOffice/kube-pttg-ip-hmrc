@@ -9,7 +9,6 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      system: ip
       name: pttg-ip-hmrc
   strategy:
     rollingUpdate:
@@ -19,6 +18,7 @@ spec:
   template:
     metadata:
       labels:
+        sys=ip
         name: pttg-ip-hmrc
         version: {{.VERSION}}
       annotations:
