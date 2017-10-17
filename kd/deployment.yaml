@@ -274,4 +274,4 @@ spec:
           medium: "Memory"
       - name: service-secrets
         secret:
-          secretName: pttg-ip-hmrc-service-secrets
+          secretName: pttg-hmrc-service-secrets
