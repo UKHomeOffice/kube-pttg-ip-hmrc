@@ -189,6 +189,8 @@ spec:
               secretKeyRef:
                 name: pttg-audit-service-secrets
                 key: pttg_ip_hmrc
+          - name: PTTG_AUDIT_URL
+            value: 'https://pttg-ip-audit.pt-i-{{.ENVIRONMENT}}.svc.cluster.local'
           - name: PTTG_DB_HOSTNAME
             valueFrom:
               secretKeyRef:
