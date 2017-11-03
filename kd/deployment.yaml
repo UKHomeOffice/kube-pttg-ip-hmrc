@@ -184,6 +184,11 @@ spec:
               secretKeyRef:
                 name: pttg-hmrc-access-service-secrets
                 key: pttg_ip_hmrc
+          - name: AUDIT_SERVICE_AUTH
+            valueFrom:
+              secretKeyRef:
+                name: pttg-audit-service-secrets
+                key: pttg_ip_hmrc
           - name: PTTG_DB_HOSTNAME
             valueFrom:
               secretKeyRef:
