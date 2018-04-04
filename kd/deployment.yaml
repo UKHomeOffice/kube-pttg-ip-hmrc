@@ -260,6 +260,9 @@ spec:
         - name: bundle
           configMap:
             name: bundle
+        - name: secrets
+          emptyDir:
+            medium: "Memory"
         - name: service-secrets
           secret:
             secretName: pttg-hmrc-service-secrets
