@@ -137,7 +137,7 @@ spec:
                 - SETGID
           env:
             - name: JAVA_OPTS
-              value: "-Xms150m -Xmx250m"
+              value: "-Xms150m -Xmx250m -Djava.net.ssl.trustStore=/etc/keystore/truststore.jks"
             - name: JDK_TRUST_FILE
               value: '/keystore/truststore.jks'
             - name: SERVER_PORT
