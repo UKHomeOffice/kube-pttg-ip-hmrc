@@ -239,6 +239,11 @@ spec:
                   name: service-timeouts
                   key: TIMEOUTS_HMRCAPI_CONNECTMS
                   optional: true
+            - name: HMRC_SELFASSESSMENT_TAXYEARS_HISTORY_MAXIMUM
+              valueFrom:
+                configMapKeyRef:
+                  name: hmrc-service-config
+                  key: SELFASSESSMENT_TAXYEARS_HISTORY_MAXIMUM
             - name: HMRC_PAYE_DATA_EPOCH
               valueFrom:
                 configMapKeyRef:
