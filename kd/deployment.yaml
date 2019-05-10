@@ -76,7 +76,7 @@ spec:
             - name: bundle
               mountPath: /etc/ssl/certs
               readOnly: true
-  
+
         - name: proxy
           image: quay.io/ukhomeofficedigital/nginx-proxy:v3.2.9
           imagePullPolicy: Always
@@ -239,6 +239,12 @@ spec:
                   name: service-timeouts
                   key: TIMEOUTS_HMRCAPI_CONNECTMS
                   optional: true
+            - name: HMRC_PAYE_DATA_EPOCH
+              valueFrom:
+                configMapKeyRef:
+                  name: hmrc-service-config
+                  key: PAYE_DATA_EPOCH
+                  optional: true
           resources:
             limits:
               cpu: 1600m
@@ -272,7 +278,7 @@ spec:
             - mountPath: /etc/keystore
               name: keystore
               readOnly: true
-      
+
       volumes:
         - name: keystore
           emptyDir:
