@@ -244,6 +244,11 @@ spec:
                 configMapKeyRef:
                   name: hmrc-service-config
                   key: SELFASSESSMENT_TAXYEARS_HISTORY_MAXIMUM
+            - name: HMRC_PAYE_DATA_EPOCH
+              valueFrom:
+                configMapKeyRef:
+                  name: hmrc-service-config
+                  key: PAYE_DATA_EPOCH
                   optional: true
           resources:
             limits:
